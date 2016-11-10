@@ -1,6 +1,6 @@
 # Leaflet-easy-example
 Leaflet easy test
-An example to Leaflet .
+
 
 #Usage
 Base map：http://map.zhtu.net:8080/r3t-basemap/{z}/{x}/{y}/tile.jpg
