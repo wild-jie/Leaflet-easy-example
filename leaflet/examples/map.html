@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Leaflet  page</title>
+	<meta charset="utf-8">
+	
+    <link rel="stylesheet" type="text/css" href="../lib/leaflet.css">
+	<style type="text/css">
+		body {
+			padding: 0;
+			margin: 0;
+		}
+    
+		html,
+		body,
+		#map {
+			height: 100%;
+		}
+    </style>  
+    <script type="text/javascript" src="../lib/leaflet-src.js"></script>
+  
+</head>
+<body>
+    <div id='map'></div>
+</body>
+	<script type="text/javascript">
+
+		var Url = 'http://map.zhtu.net:8080/r3t-basemap/{z}/{x}/{y}/tile.jpg';//获取切片数据的URL
+		osm = L.tileLayer(Url);
+		
+		var map = L.map('map');//创建map对象
+		map.setView([39.90616,116.3912], 14);//天安门为中心
+		map.addLayer(osm);
+	
+		//var zoomControl = L.control.zoom({ position: 'topleft' });
+		//	map.addControl(zoomControl);
+	
+		var zoomScale = L.control.scale({ position: 'topright' });
+		map.addControl(zoomScale);
+	
+		var marker = new L.Marker();   //创建marker     
+		function onMapClick(e) {   
+			L.marker(e.latlng).addTo(map) .bindPopup(e.latlng.toString()).openPopup();
+		}  
+			//双击触发函数
+		map.on('dblclick', onMapClick);	
+	
+	</script>
+
+</html>
